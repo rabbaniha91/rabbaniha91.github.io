@@ -29,7 +29,8 @@ jobs:
         path: node-server-test1
     - name: MongoDB in GitHub Actions
       uses: supercharge/mongodb-github-action@1.9.0
-      with: ${{ matrix.mongodb-version }}
+      with: 
+        mongodb-version: ${{ matrix.mongodb-version }}
   
     - run: npm install
     
