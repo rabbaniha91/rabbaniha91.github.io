@@ -8,11 +8,11 @@ jobs:
   build:
     env:
       CI: true
-      MONGO_URL: mongodb://localhost/nasa
+      MONGO_URL: mongodb://127.0.0.1/nasa
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
-        mongodb-version: ['4.4']
+        node-version: [16.x, 18.x]
+        mongodb-version: ['6.0']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
