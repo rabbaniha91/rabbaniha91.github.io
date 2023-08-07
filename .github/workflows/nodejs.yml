@@ -29,27 +29,25 @@ jobs:
           - 27017:27017
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: Use Node.js version ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: MongoDB in GitHub Actions
+      - name: Use MongoDB from GitHub actions
         uses: supercharge/mongodb-github-action@1.9.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build client
-        run: npm run build --prefix Client
-
-      - name: Run tests
-        run: npm test
+      - run: npm install
+      - run: npm run build --prefix client
+      - run: npm test
 
     env:
       CI: true
