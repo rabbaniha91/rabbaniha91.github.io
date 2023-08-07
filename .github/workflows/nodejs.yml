@@ -1,0 +1,56 @@
+name: NASA Project CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+        mongodb-version: ["6.0"]
+
+    services:
+      mongodb:
+        image: mongo
+        options: |
+          --health-cmd=mongo
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: MongoDB in GitHub Actions
+        uses: supercharge/mongodb-github-action@1.9.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build client
+        run: npm run build --prefix Client
+
+      - name: Run tests
+        run: npm test
+
+    env:
+      CI: true
+      MONGO_URL: mongodb://localhost/nasa
