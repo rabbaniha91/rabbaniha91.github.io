@@ -27,4 +27,4 @@ jobs:
       - run: npm test
         env:
           CI: true
-          MONGO_URL: ${{ steps.mongodb.outputs.mongodb-uri }}
+          MONGO_URL: mongodb://127.0.0.1/nasa
