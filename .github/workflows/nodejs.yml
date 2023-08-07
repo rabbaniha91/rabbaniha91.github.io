@@ -8,7 +8,7 @@ jobs:
   build:
     env:
       CI: true
-      MONGO_URL: ${{ secrets.MONGO_URL }}
+      MONGO_URL: mongodb://127.0.0.1/nasa
     strategy:
       matrix:
         node-version: [16.x, 18.x]
