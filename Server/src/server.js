@@ -11,7 +11,7 @@ const { loadLaunchesSpaceX } = require("./model/launch.model")
 
 const server = http.createServer(app);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 async function loadData() {
   await connectMongo();

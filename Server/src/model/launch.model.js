@@ -53,7 +53,7 @@ async function createNewLaunch(launch) {
   });
   await launnchesDataBase.updateOne(
     {
-      flightNumber: launch.flightNumber,
+      flightNumber: +launch.flightNumber,
     },
     launch,
     {

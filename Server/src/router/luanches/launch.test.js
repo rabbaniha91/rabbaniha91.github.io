@@ -47,20 +47,20 @@ describe("Test Launch API", () => {
 
     /// the success created new launch
 
-    // test("The status code shoud be 201!", async () => {
-    //   const responce = await request(app)
-    //     .post("/v1/launches")
-    //     .send(completeLaunchData)
-    //     .expect("Content-Type", /json/)
-    //     .expect(201);
+    test("The status code shoud be 201!", async () => {
+      const responce = await request(app)
+        .post("/v1/launches")
+        .send(completeLaunchData)
+        .expect("Content-Type", /json/)
+        .expect(201);
 
-    //   const requestDate = new Date(completeLaunchData.launchDate).valueOf();
-    //   const responceDate = new Date(responce.body.launchDate).valueOf();
+      const requestDate = new Date(completeLaunchData.launchDate).valueOf();
+      const responceDate = new Date(responce.body.launchDate).valueOf();
 
-    //   expect(responceDate).toBe(requestDate);
+      expect(responceDate).toBe(requestDate);
 
-    //   expect(responce.body).toMatchObject(launchDataWithoutDate);
-    // });
+      expect(responce.body).toMatchObject(launchDataWithoutDate);
+    });
 
     /// the fail add launch because miss data
 
