@@ -8,7 +8,7 @@ jobs:
   build:
     env:
       CI: true
-      MONGO_URL: mongodb+srv://heydar:C6pNceuwo8rk8jnZ@nasatestci.zl3ft8f.mongodb.net/?retryWrites=true&w=majority
+      MONGO_URL: ${{ secrets.MONGO_URL }}
     strategy:
       matrix:
         node-version: [16.x, 18.x]
