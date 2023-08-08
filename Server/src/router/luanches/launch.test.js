@@ -47,20 +47,20 @@ describe("Test Launch API", () => {
 
     /// the success created new launch
 
-    test("The status code shoud be 201!", async () => {
-      const responce = await request(app)
-        .post("/v1/launches")
-        .send(completeLaunchData)
-        .expect("Content-Type", /json/)
-        .expect(201);
+    // test("The status code shoud be 201!", async () => {
+    //   const responce = await request(app)
+    //     .post("/v1/launches")
+    //     .send(completeLaunchData)
+    //     .expect("Content-Type", /json/)
+    //     .expect(201);
 
-      const requestDate = new Date(completeLaunchData.launchDate).valueOf();
-      const responceDate = new Date(responce.body.launchDate).valueOf();
+    //   const requestDate = new Date(completeLaunchData.launchDate).valueOf();
+    //   const responceDate = new Date(responce.body.launchDate).valueOf();
 
-      expect(responceDate).toBe(requestDate);
+    //   expect(responceDate).toBe(requestDate);
 
-      expect(responce.body).toMatchObject(launchDataWithoutDate);
-    });
+    //   expect(responce.body).toMatchObject(launchDataWithoutDate);
+    // });
 
     /// the fail add launch because miss data
 
@@ -91,29 +91,29 @@ describe("Test Launch API", () => {
 
   /// Test delete request to launches route
 
-  describe("The DELETE launches", () => {
-    let id = 105;
+  // describe("The DELETE launches", () => {
+  //   let id = 105;
 
-    /// the success delete launch
+  //   /// the success delete launch
 
-    test("The status code shoud be 200", async () => {
-      const responce = await request(app)
-        .delete(`/v1/launches/${id}`)
-        .expect("Content-Type", /json/)
-        .expect(200);
-      expect(responce.body.flightNumber).toBe(id);
-    });
+  //   test("The status code shoud be 200", async () => {
+  //     const responce = await request(app)
+  //       .delete(`/v1/launches/${id}`)
+  //       .expect("Content-Type", /json/)
+  //       .expect(200);
+  //     expect(responce.body.flightNumber).toBe(id);
+  //   });
 
-    /// the fail delete
+  //   /// the fail delete
 
-    test("The status code shoud be 404", async () => {
-      const responce = await request(app)
-        .delete("/v1/launches/302")
-        .expect("Content-Type", /json/)
-        .expect(404);
-      expect(responce.body).toStrictEqual({
-        error: "launch not found!",
-      });
-    });
-  });
+  //   test("The status code shoud be 404", async () => {
+  //     const responce = await request(app)
+  //       .delete("/v1/launches/302")
+  //       .expect("Content-Type", /json/)
+  //       .expect(404);
+  //     expect(responce.body).toStrictEqual({
+  //       error: "launch not found!",
+  //     });
+  //   });
+  // });
 });

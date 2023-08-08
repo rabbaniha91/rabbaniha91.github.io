@@ -42,7 +42,7 @@ async function createNewLaunch(launch) {
     keplerName: launch.target,
   });
   if (!planetName) {
-    return false;
+    return null;
   }
   launchFlightNumber++;
   Object.assign(launch, {
