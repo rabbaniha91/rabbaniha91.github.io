@@ -51,7 +51,7 @@ async function createNewLaunch(launch) {
     upcoming: true,
     success: true,
   });
-  await launnchesDataBase.updateOne(
+  await launnchesDataBase.updateOneAndUpdate(
     {
       flightNumber: +launch.flightNumber,
     },
