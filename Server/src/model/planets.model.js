@@ -14,7 +14,7 @@ function habitablePlanets(planet) {
   );
 }
 
-function retrurnPlanets() {
+function returnPlanets() {
   return new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, "..", "./data/planetData.csv"))
       .pipe(
@@ -60,6 +60,6 @@ async function insertPlanet(planet) {
 }
 
 module.exports = {
-  retrurnPlanets,
+  returnPlanets,
   getAllPlanets,
 };

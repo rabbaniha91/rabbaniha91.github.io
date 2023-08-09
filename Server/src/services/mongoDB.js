@@ -14,7 +14,10 @@ mongoose.connection.on("error", (err) => {
 
 
 async function connectMongo(){
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(MONGO_URL, {
+    socketTimeoutMS: 30000,
+    connectTimeoutMS: 30000,
+  });
 }
 
 async function disconnectMongo(){
